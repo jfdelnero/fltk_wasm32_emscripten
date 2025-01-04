@@ -25,6 +25,7 @@ public:
   Fl_Emscripten_System_Driver();
   double wait(double) FL_OVERRIDE;
   char *strdup(const char *) FL_OVERRIDE;
+  void gettime(time_t *sec, int *usec) FL_OVERRIDE;
 };
 
 #endif

@@ -29,6 +29,21 @@ double Fl_Emscripten_System_Driver::wait(double v) {
   return ret;
 }
 
+void Fl_Emscripten_System_Driver::gettime(time_t *sec, int *usec) {
+  time_t s;
+  int us;
+  double now = emscripten_get_now(); // In ms.
+
+  // seconds rounded by truncation
+  s = (time_t)(now / 1000.0);
+
+  // get the remaining us.  
+  us = (int)( ( now - ( ((double)s) * 1000.0 ) ) * 1000.0 ); 
+
+  *sec = s;
+  *usec = us;
+}
+
 char *Fl_Emscripten_System_Driver::strdup(const char *s) {
   return ::strdup(s);
 }
