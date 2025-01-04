@@ -1220,7 +1220,7 @@ void Fl_Emscripten_Graphics_Driver::draw_fixed(Fl_RGB_Image *rgb, int XP, int YP
   EM_ASM(
       {
         let ctx = Emval.toValue($0);
-        let idata = new ImageData(new Uint8ClampedArray(HEAPF64.buffer, $1, $2), $3, $4);
+        let idata = new ImageData(new Uint8ClampedArray(HEAPF64.buffer, $1, $2).slice(), $3, $4);
         ctx.save();
         ctx.rect($5, $6, $9, $10);
         ctx.clip();
